@@ -8,7 +8,7 @@ struct node {
 };
 struct node *head , *newnode , *temp;
 
-// Insertion 
+//Insertion 
 void  InserT( int count, node * head){
     int pos; 
     cin >> pos;
