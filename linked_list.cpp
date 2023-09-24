@@ -6,13 +6,13 @@ struct node {
     int value;
     struct node *next;
 };
-struct node *head , *newnode , *temp;
-
-//Insertion 
+ struct node *head , *newnode , *temp;
+// Insertion at the beginning 
 void  InserT( int count, node * head){
     int pos; 
     cin >> pos;
     int i=1;
+
     if(count < pos ){
         cout << "invalid position" ;
     }
@@ -26,11 +26,30 @@ void  InserT( int count, node * head){
         cin >> newnode -> value;
         newnode -> next = temp -> next;
         temp -> next = newnode;
+
     }
+}
+
+// Deletion of node
+void Delete ( node *head ){
+    struct node *nxtnod;
+    int pos;
+    cin>> pos;
+    temp = head;
+    int i=1;
+    while(i < pos-1){
+        temp = temp -> next;
+        i++; 
+    }
+    nxtnod= temp -> next;
+    temp -> next = nxtnod -> next;
+    free(nxtnod);
+
 }
 
 // Main function
 int main(){
+    
     head = NULL;
     int choice=1, cnt =0;
     while(choice){
@@ -40,7 +59,7 @@ int main(){
         if(head == NULL){
             head = temp = newnode;
         } 
-        else{
+        else {
             temp -> next = newnode;
             temp = newnode;
         }
@@ -51,13 +70,18 @@ int main(){
         temp = temp -> next;
         cnt ++;
     }
-
-    InserT(cnt , head);
+    Delete (head);
+    
+    //InserT(cnt , head);
     temp = head;
     while(temp != NULL){
         cout << temp -> value << " ";
-        temp = temp -> next;  
+        temp = temp -> next;
+       
     }
 
     //cout << cnt << endl;
+
+
+
 }
